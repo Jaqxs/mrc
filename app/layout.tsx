@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "MRC Web Platform - Migrant Resource Center",
+  title: "MRC Web Platform – Migrant Resource Center",
   description:
     "Official web platform for the Migrant Resource Center. Providing essential services, resources, and support for migrants and refugees.",
   keywords: [
@@ -15,14 +15,13 @@ export const metadata: Metadata = {
     "services",
     "resources",
     "community",
-    "humanitarian",
-    "aid",
+    "humanitarian aid",
   ],
   authors: [{ name: "MRC Team" }],
   creator: "v0.dev",
   publisher: "Vercel",
   openGraph: {
-    title: "MRC Web Platform - Migrant Resource Center",
+    title: "MRC Web Platform – Migrant Resource Center",
     description:
       "Official web platform for the Migrant Resource Center. Providing essential services, resources, and support for migrants and refugees.",
     url: "https://www.mrcplatform.org", // Replace with your actual domain
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MRC Web Platform - Migrant Resource Center",
+    title: "MRC Web Platform – Migrant Resource Center",
     description:
       "Official web platform for the Migrant Resource Center. Providing essential services, resources, and support for migrants and refugees.",
     images: ["/placeholder-logo.png"], // Use your actual logo/image path
@@ -57,8 +56,7 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },,
-  // Add any other relevant meta tags here
+  },
     generator: 'v0.dev'
 }
 
