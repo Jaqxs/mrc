@@ -3,35 +3,39 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "MRC Web Platform – Migrant Resource Center",
+  title: "MRC Careers – International Job Recruitment Agency",
   description:
-    "Official web platform for the Migrant Resource Center. Providing essential services, resources, and support for migrants and refugees.",
+    "Leading international job recruitment agency connecting talented professionals with overseas career opportunities. Find your dream job abroad with comprehensive placement and support services.",
   keywords: [
-    "MRC",
-    "Migrant Resource Center",
-    "migrants",
-    "refugees",
-    "support",
-    "services",
-    "resources",
-    "community",
-    "humanitarian aid",
+    "MRC Careers",
+    "international jobs",
+    "overseas employment",
+    "job recruitment",
+    "career opportunities",
+    "work abroad",
+    "job placement",
+    "recruitment agency",
+    "international careers",
+    "job search",
+    "employment services",
+    "visa assistance",
+    "work permits",
   ],
-  authors: [{ name: "MRC Team" }],
+  authors: [{ name: "MRC Careers Team" }],
   creator: "v0.dev",
   publisher: "Vercel",
   openGraph: {
-    title: "MRC Web Platform – Migrant Resource Center",
+    title: "MRC Careers – International Job Recruitment Agency",
     description:
-      "Official web platform for the Migrant Resource Center. Providing essential services, resources, and support for migrants and refugees.",
-    url: "https://www.mrcplatform.org", // Replace with your actual domain
-    siteName: "MRC Web Platform",
+      "Leading international job recruitment agency connecting talented professionals with overseas career opportunities. Find your dream job abroad with comprehensive placement and support services.",
+    url: "https://www.mrccareers.org", // Replace with your actual domain
+    siteName: "MRC Careers",
     images: [
       {
         url: "/placeholder-logo.png", // Use your actual logo/image path
         width: 800,
         height: 600,
-        alt: "MRC Web Platform Logo",
+        alt: "MRC Careers - International Job Recruitment Agency Logo",
       },
     ],
     locale: "en_US",
@@ -39,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "MRC Web Platform – Migrant Resource Center",
+    title: "MRC Careers – International Job Recruitment Agency",
     description:
-      "Official web platform for the Migrant Resource Center. Providing essential services, resources, and support for migrants and refugees.",
+      "Leading international job recruitment agency connecting talented professionals with overseas career opportunities. Find your dream job abroad with comprehensive placement and support services.",
     images: ["/placeholder-logo.png"], // Use your actual logo/image path
   },
   robots: {

@@ -310,7 +310,7 @@ export default function LoginPage() {
                         </div>
 
                         <Button className="w-full h-12 bg-purple-600 hover:bg-purple-700 text-lg" asChild>
-                          <Link href="/dashboard/admin">
+                          <Link href="/dashboard/admin/applications">
                             Sign In to Admin Portal
                             <ChevronRight className="ml-2 w-5 h-5" />
                           </Link>
@@ -395,33 +395,6 @@ export default function LoginPage() {
                       <span className="text-sm text-gray-600">Response Time</span>
                       <span className="text-sm text-gray-900">&lt; 2 seconds</span>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Quick Links */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Quick Links</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <Link href="/services" className="flex items-center text-sm text-gray-700 hover:text-blue-600">
-                      <ChevronRight className="w-4 h-4 mr-2" />
-                      Browse Services
-                    </Link>
-                    <Link href="/resources" className="flex items-center text-sm text-gray-700 hover:text-blue-600">
-                      <ChevronRight className="w-4 h-4 mr-2" />
-                      Download Resources
-                    </Link>
-                    <Link href="/faq" className="flex items-center text-sm text-gray-700 hover:text-blue-600">
-                      <ChevronRight className="w-4 h-4 mr-2" />
-                      Frequently Asked Questions
-                    </Link>
-                    <Link href="/contact" className="flex items-center text-sm text-gray-700 hover:text-blue-600">
-                      <ChevronRight className="w-4 h-4 mr-2" />
-                      Contact Information
-                    </Link>
                   </div>
                 </CardContent>
               </Card>

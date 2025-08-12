@@ -1,40 +1,40 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
-  Search,
-  MapPin,
+  Globe,
   Phone,
   Mail,
-  Globe,
+  Search,
   Users,
-  FileText,
-  Shield,
-  Heart,
-  Scale,
-  Briefcase,
-  ChevronRight,
-  Calendar,
-  Download,
-  ExternalLink,
-  Building,
-  Star,
-  TrendingUp,
-  Award,
-  CheckCircle,
   ArrowRight,
   PlayCircle,
-  Zap,
-  Target,
+  Shield,
   Clock,
+  Award,
+  Star,
+  Target,
   MessageSquare,
+  Briefcase,
+  CheckCircle,
+  TrendingUp,
+  Calendar,
+  ExternalLink,
+  ChevronRight,
+  FileText,
+  Building,
+  MapPin,
+  Zap,
+  UserCheck,
+  GraduationCap,
+  Handshake,
 } from "lucide-react"
-import Link from "next/link"
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -43,101 +43,103 @@ export default function HomePage() {
 
   const heroSlides = [
     {
-      title: "Safe Migration Starts Here",
-      subtitle: "Your trusted partner for dignified migration",
-      description: "Access comprehensive services, legal support, and guidance throughout your migration journey.",
-      cta: "Start Your Journey",
+      title: "Find Your Dream Job Overseas",
+      subtitle: "Your trusted partner for international careers",
+      description:
+        "Access thousands of verified job opportunities abroad with comprehensive support throughout your journey.",
+      cta: "Browse Jobs Now",
       image: "bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800",
     },
     {
-      title: "24/7 Emergency Support",
+      title: "24/7 Career Support",
       subtitle: "We're here when you need us most",
-      description: "Round-the-clock assistance for migrants in crisis situations worldwide.",
-      cta: "Get Emergency Help",
-      image: "bg-gradient-to-r from-red-600 via-pink-700 to-rose-800",
+      description: "Round-the-clock assistance for job seekers and career guidance from our expert team.",
+      cta: "Get Career Help",
+      image: "bg-gradient-to-r from-green-600 via-emerald-700 to-teal-800",
     },
     {
-      title: "Legal Protection & Rights",
-      subtitle: "Know your rights, protect your future",
-      description: "Professional legal aid and contract review services to ensure fair treatment.",
-      cta: "Learn Your Rights",
-      image: "bg-gradient-to-r from-green-600 via-emerald-700 to-teal-800",
+      title: "Secure Job Placements",
+      subtitle: "Verified employers, guaranteed opportunities",
+      description: "Work with trusted international employers through our verified recruitment network.",
+      cta: "View Opportunities",
+      image: "bg-gradient-to-r from-orange-600 via-red-700 to-pink-800",
     },
   ]
 
   const quickLinks = [
-    { title: "Register as Migrant", href: "/register", icon: Users, color: "from-blue-500 to-blue-600" },
-    { title: "Find Services", href: "/services", icon: Search, color: "from-green-500 to-green-600" },
-    { title: "Download Forms", href: "/resources", icon: Download, color: "from-purple-500 to-purple-600" },
-    { title: "Contact MRC", href: "/contact", icon: Phone, color: "from-orange-500 to-orange-600" },
+    { title: "Browse Jobs", href: "/jobs", icon: Briefcase, color: "from-blue-500 to-blue-600" },
+    { title: "Submit Application", href: "/jobs/apply", icon: UserCheck, color: "from-green-500 to-green-600" },
+    { title: "Career Resources", href: "/resources", icon: GraduationCap, color: "from-purple-500 to-purple-600" },
+    { title: "Contact Recruiters", href: "/contact", icon: Phone, color: "from-orange-500 to-orange-600" },
   ]
 
   const services = [
     {
-      title: "Pre-Departure Services",
-      description: "Comprehensive orientation, training, and preparation before migration",
+      title: "Job Matching & Placement",
+      description: "Advanced matching system connecting you with the perfect overseas opportunities",
       icon: Briefcase,
       color: "from-blue-500 to-blue-600",
-      features: ["Orientation Programs", "Skills Training", "Documentation", "Cultural Preparation"],
-      stats: "2,500+ Trained",
+      features: ["Skills Assessment", "Job Matching", "Interview Preparation", "Placement Support"],
+      stats: "2,500+ Placed",
     },
     {
-      title: "Legal Aid & Support",
-      description: "Professional legal assistance, contract review, and rights protection",
-      icon: Scale,
+      title: "Visa & Documentation",
+      description: "Complete assistance with work permits, visas, and all required documentation",
+      icon: FileText,
       color: "from-green-500 to-green-600",
-      features: ["Contract Review", "Legal Consultation", "Rights Protection", "Court Representation"],
-      stats: "1,800+ Cases",
+      features: ["Visa Processing", "Document Verification", "Legal Compliance", "Fast-Track Service"],
+      stats: "1,800+ Processed",
     },
     {
-      title: "Psychosocial Support",
-      description: "Mental health counseling and emotional support services",
-      icon: Heart,
-      color: "from-red-500 to-red-600",
-      features: ["Individual Counseling", "Group Therapy", "Crisis Intervention", "Family Support"],
-      stats: "1,200+ Sessions",
-    },
-    {
-      title: "Reintegration Support",
-      description: "Comprehensive assistance for returnee migrants",
-      icon: Users,
+      title: "Pre-Departure Training",
+      description: "Comprehensive preparation including language, culture, and professional skills",
+      icon: GraduationCap,
       color: "from-purple-500 to-purple-600",
-      features: ["Job Placement", "Business Support", "Community Integration", "Skills Development"],
-      stats: "900+ Reintegrated",
+      features: ["Language Training", "Cultural Orientation", "Professional Skills", "Safety Training"],
+      stats: "1,200+ Trained",
+    },
+    {
+      title: "Ongoing Career Support",
+      description: "Continuous support throughout your international career journey",
+      icon: Handshake,
+      color: "from-orange-500 to-orange-600",
+      features: ["Career Counseling", "Employer Relations", "Contract Negotiation", "Career Advancement"],
+      stats: "900+ Supported",
     },
   ]
 
   const stats = [
-    { value: 5000, label: "Migrants Served", icon: Users, color: "text-blue-600" },
-    { value: 15, label: "Partner Countries", icon: Globe, color: "text-green-600" },
-    { value: 24, label: "Hours Support", icon: Clock, color: "text-purple-600" },
+    { value: 5000, label: "Jobs Placed", icon: Briefcase, color: "text-blue-600" },
+    { value: 25, label: "Partner Countries", icon: Globe, color: "text-green-600" },
+    { value: 150, label: "Verified Employers", icon: Building, color: "text-purple-600" },
     { value: 98, label: "Success Rate %", icon: Award, color: "text-orange-600" },
   ]
 
   const announcements = [
     {
       date: "Jan 20, 2024",
-      title: "New Pre-Departure Training Program Launched",
-      excerpt: "Enhanced training modules now available for all registered migrants with interactive content...",
-      category: "Training",
+      title: "500+ New Healthcare Jobs Available in Canada",
+      excerpt:
+        "Major healthcare recruitment drive with immediate openings for nurses, caregivers, and medical technicians...",
+      category: "Healthcare",
       priority: "high",
       image: "bg-gradient-to-br from-blue-500 to-blue-600",
     },
     {
       date: "Jan 18, 2024",
-      title: "Updated Legal Aid Services",
-      excerpt: "Expanded legal support services now include contract negotiation and workplace rights...",
-      category: "Legal",
+      title: "Construction Workers Needed in UAE",
+      excerpt: "Large construction projects offering competitive salaries and accommodation for skilled workers...",
+      category: "Construction",
       priority: "medium",
-      image: "bg-gradient-to-br from-green-500 to-green-600",
+      image: "bg-gradient-to-br from-orange-500 to-orange-600",
     },
     {
       date: "Jan 15, 2024",
-      title: "Emergency Contact System Upgraded",
-      excerpt: "24/7 emergency support system now available with multilingual support and faster response...",
-      category: "Emergency",
+      title: "IT Professionals - Remote & On-site Opportunities",
+      excerpt: "Tech companies across Europe seeking software developers, data analysts, and IT specialists...",
+      category: "Technology",
       priority: "high",
-      image: "bg-gradient-to-br from-red-500 to-red-600",
+      image: "bg-gradient-to-br from-purple-500 to-purple-600",
     },
   ]
 
@@ -185,21 +187,21 @@ export default function HomePage() {
                 <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-2 group-hover:scale-110 transition-transform">
                   <Phone className="w-3 h-3 text-white" />
                 </div>
-                Emergency: +255 123 456 789
+                Job Hotline: +255 123 456 789
               </span>
               <span className="flex items-center hover:text-blue-200 transition-all duration-300 cursor-pointer group">
                 <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-2 group-hover:scale-110 transition-transform">
                   <Mail className="w-3 h-3 text-white" />
                 </div>
-                info@mrc.go.tz
+                careers@mrc.go.tz
               </span>
             </div>
             <div className="flex items-center space-x-6">
               <Link href="/help" className="hover:text-blue-200 transition-colors duration-300 hover:underline">
-                Help Center
+                Career Help
               </Link>
               <Link href="/contact" className="hover:text-blue-200 transition-colors duration-300 hover:underline">
-                Contact Us
+                Contact Recruiters
               </Link>
               <Select>
                 <SelectTrigger className="w-24 h-7 text-xs bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all">
@@ -223,22 +225,25 @@ export default function HomePage() {
             <Link href="/" className="flex items-center space-x-4 group">
               <div className="relative">
                 <div className="w-14 h-14 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
-                  <Globe className="w-8 h-8 text-white group-hover:animate-pulse" />
+                  <Briefcase className="w-8 h-8 text-white group-hover:animate-pulse" />
                 </div>
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-600 group-hover:to-blue-600 transition-all duration-500">
-                  MRC PORTAL
+                  MRC CAREERS
                 </h1>
-                <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">Migrant Resource Centre</p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+                  International Recruitment Agency
+                </p>
               </div>
             </Link>
 
             <nav className="hidden lg:flex items-center space-x-8">
               {[
                 { name: "Home", href: "/", active: true },
-                { name: "Services", href: "/services" },
+                { name: "Jobs", href: "/jobs" },
+                { name: "Apply", href: "/jobs/apply" },
                 { name: "Resources", href: "/resources" },
                 { name: "About", href: "/about" },
                 { name: "Contact", href: "/contact" },
@@ -264,7 +269,7 @@ export default function HomePage() {
                 className="border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-300 hover:scale-105 bg-transparent"
                 asChild
               >
-                <Link href="/login">Sign In</Link>
+                <Link href="/login">Job Seeker Login</Link>
               </Button>
               <Button
                 size="sm"
@@ -272,7 +277,7 @@ export default function HomePage() {
                 asChild
               >
                 <Link href="/register">
-                  Register Now
+                  Find Jobs Now
                   <Zap className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
@@ -294,7 +299,7 @@ export default function HomePage() {
               >
                 <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-full mb-6 border border-white/20">
                   <Star className="w-4 h-4 mr-2 text-yellow-400" />
-                  <span className="text-sm font-medium">Trusted by 5,000+ Migrants</span>
+                  <span className="text-sm font-medium">5,000+ Jobs Placed Successfully</span>
                 </div>
 
                 <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
@@ -314,7 +319,7 @@ export default function HomePage() {
                     className="bg-white text-blue-600 hover:bg-blue-50 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 text-lg px-8 py-4"
                     asChild
                   >
-                    <Link href="/register">
+                    <Link href="/jobs">
                       {heroSlides[currentSlide].cta}
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Link>
@@ -325,9 +330,9 @@ export default function HomePage() {
                     className="border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 bg-transparent backdrop-blur-md text-lg px-8 py-4"
                     asChild
                   >
-                    <Link href="/services">
+                    <Link href="/about">
                       <PlayCircle className="mr-2 w-5 h-5" />
-                      Watch Demo
+                      How It Works
                     </Link>
                   </Button>
                 </div>
@@ -335,7 +340,7 @@ export default function HomePage() {
                 <div className="flex items-center space-x-8 text-sm">
                   <div className="flex items-center">
                     <Shield className="w-5 h-5 mr-2 text-green-400" />
-                    <span>Secure & Confidential</span>
+                    <span>Verified Employers</span>
                   </div>
                   <div className="flex items-center">
                     <Clock className="w-5 h-5 mr-2 text-blue-400" />
@@ -356,7 +361,7 @@ export default function HomePage() {
                   <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8">
                     <CardTitle className="text-2xl font-bold text-center flex items-center justify-center">
                       <Target className="w-6 h-6 mr-2" />
-                      Quick Access Portal
+                      Job Search Portal
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-8">
@@ -365,14 +370,14 @@ export default function HomePage() {
                       <div className="relative group">
                         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5 group-hover:text-blue-500 transition-colors" />
                         <Input
-                          placeholder="Search services, resources, or get help..."
+                          placeholder="Search jobs by title, location, or company..."
                           className="pl-12 h-14 text-lg border-2 border-slate-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 hover:border-blue-300"
                         />
                         <Button
                           size="sm"
                           className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 rounded-xl"
                         >
-                          Search
+                          Search Jobs
                         </Button>
                       </div>
                     </div>
@@ -405,7 +410,7 @@ export default function HomePage() {
                       >
                         <Link href="/register">
                           <Users className="mr-2 w-5 h-5" />
-                          Register as Migrant Worker
+                          Create Job Seeker Profile
                         </Link>
                       </Button>
                       <Button
@@ -415,30 +420,30 @@ export default function HomePage() {
                       >
                         <Link href="/login">
                           <Shield className="mr-2 w-5 h-5" />
-                          Staff / Admin Login
+                          Employer / Admin Login
                         </Link>
                       </Button>
                     </div>
 
                     {/* Enhanced Emergency Section */}
-                    <div className="mt-8 p-6 bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl border-2 border-red-200">
+                    <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl border-2 border-green-200">
                       <div className="text-center">
-                        <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mx-auto mb-3 animate-pulse">
+                        <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 animate-pulse">
                           <Phone className="w-6 h-6 text-white" />
                         </div>
-                        <p className="text-sm font-semibold text-red-800 mb-3">Need immediate assistance?</p>
+                        <p className="text-sm font-semibold text-green-800 mb-3">Need career guidance?</p>
                         <div className="flex justify-center space-x-3">
                           <Button
                             size="sm"
-                            className="bg-red-500 hover:bg-red-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                            className="bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                           >
                             <Phone className="w-4 h-4 mr-2" />
-                            Emergency
+                            Call Now
                           </Button>
                           <Button
                             size="sm"
                             variant="outline"
-                            className="border-red-300 text-red-600 hover:bg-red-50 transition-all duration-300 hover:scale-105 bg-transparent"
+                            className="border-green-300 text-green-600 hover:bg-green-50 transition-all duration-300 hover:scale-105 bg-transparent"
                           >
                             <MessageSquare className="w-4 h-4 mr-2" />
                             Live Chat
@@ -475,15 +480,15 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-6">
               <Briefcase className="w-4 h-4 mr-2 text-blue-600" />
-              <span className="text-sm font-semibold text-blue-600">Our Services</span>
+              <span className="text-sm font-semibold text-blue-600">Our Recruitment Services</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
-              Comprehensive Support
-              <span className="block text-blue-600">At Every Step</span>
+              Complete Career Solutions
+              <span className="block text-blue-600">From Application to Placement</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              From pre-departure preparation to successful reintegration, we provide end-to-end support for your
-              migration journey
+              From finding the perfect job match to securing your work visa, we provide comprehensive support for your
+              international career journey
             </p>
           </div>
 
@@ -564,9 +569,9 @@ export default function HomePage() {
 
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">Impact That Matters</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">Proven Track Record</h2>
             <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Real numbers that showcase our commitment to supporting migrant workers
+              Real numbers that showcase our success in connecting talent with international opportunities
             </p>
           </div>
 
@@ -603,15 +608,15 @@ export default function HomePage() {
                 <div>
                   <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full mb-4">
                     <Calendar className="w-4 h-4 mr-2 text-blue-600" />
-                    <span className="text-sm font-semibold text-blue-600">Latest Updates</span>
+                    <span className="text-sm font-semibold text-blue-600">Latest Opportunities</span>
                   </div>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-slate-800">News & Announcements</h2>
+                  <h2 className="text-3xl lg:text-4xl font-bold text-slate-800">Hot Job Openings</h2>
                 </div>
                 <Link
-                  href="/news"
+                  href="/jobs"
                   className="text-blue-600 hover:text-blue-700 flex items-center font-semibold hover:underline transition-all duration-300"
                 >
-                  View All
+                  View All Jobs
                   <ExternalLink className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -631,7 +636,7 @@ export default function HomePage() {
                               <div
                                 className={`w-12 h-12 ${news.image} rounded-xl flex items-center justify-center shadow-lg`}
                               >
-                                <Calendar className="w-6 h-6 text-white" />
+                                <Briefcase className="w-6 h-6 text-white" />
                               </div>
                               <div>
                                 <div className="flex items-center space-x-2 mb-1">
@@ -659,7 +664,7 @@ export default function HomePage() {
                             size="sm"
                             className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 p-0"
                           >
-                            Read Full Article
+                            Apply Now
                             <ChevronRight className="w-4 h-4 ml-1" />
                           </Button>
                         </div>
@@ -677,21 +682,21 @@ export default function HomePage() {
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center text-blue-800">
                     <TrendingUp className="w-5 h-5 mr-2" />
-                    Live Statistics
+                    Live Job Market
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-3 bg-white rounded-xl shadow-sm">
-                      <span className="text-sm text-slate-600">Active Cases</span>
+                      <span className="text-sm text-slate-600">Active Jobs</span>
                       <span className="font-bold text-blue-600 text-lg">1,247</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-xl shadow-sm">
-                      <span className="text-sm text-slate-600">This Month</span>
+                      <span className="text-sm text-slate-600">New This Week</span>
                       <span className="font-bold text-green-600 text-lg">+156</span>
                     </div>
                     <div className="flex justify-between items-center p-3 bg-white rounded-xl shadow-sm">
-                      <span className="text-sm text-slate-600">Success Rate</span>
+                      <span className="text-sm text-slate-600">Placement Rate</span>
                       <span className="font-bold text-purple-600 text-lg">98.2%</span>
                     </div>
                   </div>
@@ -703,16 +708,16 @@ export default function HomePage() {
                 <CardHeader>
                   <CardTitle className="text-lg flex items-center">
                     <Star className="w-5 h-5 mr-2 text-yellow-500" />
-                    Important Links
+                    Quick Links
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     {[
-                      { icon: Phone, text: "Emergency Contacts", color: "text-red-600", bg: "bg-red-50" },
-                      { icon: Download, text: "Download Forms", color: "text-blue-600", bg: "bg-blue-50" },
-                      { icon: FileText, text: "FAQ", color: "text-green-600", bg: "bg-green-50" },
-                      { icon: Building, text: "Partner Organizations", color: "text-purple-600", bg: "bg-purple-50" },
+                      { icon: Briefcase, text: "Browse All Jobs", color: "text-blue-600", bg: "bg-blue-50" },
+                      { icon: UserCheck, text: "Application Status", color: "text-green-600", bg: "bg-green-50" },
+                      { icon: GraduationCap, text: "Career Resources", color: "text-purple-600", bg: "bg-purple-50" },
+                      { icon: Phone, text: "Contact Recruiters", color: "text-orange-600", bg: "bg-orange-50" },
                     ].map((link, index) => (
                       <Link
                         key={index}
@@ -730,7 +735,7 @@ export default function HomePage() {
               {/* Enhanced Contact Info */}
               <Card className="bg-gradient-to-br from-slate-50 to-blue-50 shadow-lg">
                 <CardHeader>
-                  <CardTitle className="text-lg">Contact Information</CardTitle>
+                  <CardTitle className="text-lg">Contact Our Recruiters</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4 text-sm">
@@ -738,27 +743,27 @@ export default function HomePage() {
                       <Phone className="w-4 h-4 mr-3 mt-0.5 text-blue-500" />
                       <div>
                         <div className="font-semibold">+255 123 456 789</div>
-                        <div className="text-slate-600">Main Office</div>
+                        <div className="text-slate-600">Career Hotline</div>
                       </div>
                     </div>
-                    <div className="flex items-start p-3 bg-red-50 rounded-xl border border-red-200">
-                      <Phone className="w-4 h-4 mr-3 mt-0.5 text-red-500" />
+                    <div className="flex items-start p-3 bg-green-50 rounded-xl border border-green-200">
+                      <Phone className="w-4 h-4 mr-3 mt-0.5 text-green-500" />
                       <div>
-                        <div className="font-semibold text-red-600">+255 911 HELP</div>
-                        <div className="text-red-600">24/7 Emergency</div>
+                        <div className="font-semibold text-green-600">+255 800 JOBS</div>
+                        <div className="text-green-600">24/7 Job Support</div>
                       </div>
                     </div>
                     <div className="flex items-start p-3 bg-white rounded-xl shadow-sm">
                       <Mail className="w-4 h-4 mr-3 mt-0.5 text-green-500" />
                       <div>
-                        <div className="font-semibold">info@mrc.go.tz</div>
-                        <div className="text-slate-600">General Inquiries</div>
+                        <div className="font-semibold">careers@mrc.go.tz</div>
+                        <div className="text-slate-600">Career Inquiries</div>
                       </div>
                     </div>
                     <div className="flex items-start p-3 bg-white rounded-xl shadow-sm">
                       <MapPin className="w-4 h-4 mr-3 mt-0.5 text-purple-500" />
                       <div>
-                        <div className="font-semibold">123 Migration Street</div>
+                        <div className="font-semibold">123 Career Plaza</div>
                         <div className="text-slate-600">Dar es Salaam, Tanzania</div>
                       </div>
                     </div>
@@ -777,16 +782,16 @@ export default function HomePage() {
             <div>
               <div className="flex items-center space-x-4 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-xl">
-                  <Globe className="w-7 h-7 text-white" />
+                  <Briefcase className="w-7 h-7 text-white" />
                 </div>
                 <div>
-                  <div className="font-bold text-xl">MRC PORTAL</div>
-                  <div className="text-xs text-blue-200">Migrant Resource Centre</div>
+                  <div className="font-bold text-xl">MRC CAREERS</div>
+                  <div className="text-xs text-blue-200">International Recruitment Agency</div>
                 </div>
               </div>
               <p className="text-blue-100 text-sm mb-6 leading-relaxed">
-                Supporting migrant workers with comprehensive services and resources for safe, legal, and dignified
-                migration.
+                Connecting talented professionals with international career opportunities through our comprehensive
+                recruitment and placement services.
               </p>
               <div className="text-sm text-blue-200">
                 <p>© 2024 Government of Tanzania</p>
@@ -796,21 +801,21 @@ export default function HomePage() {
 
             {[
               {
-                title: "Services",
+                title: "Job Categories",
                 links: [
-                  { name: "Pre-Departure Services", href: "/services/pre-departure" },
-                  { name: "Legal Aid", href: "/services/legal" },
-                  { name: "Reintegration Support", href: "/services/reintegration" },
-                  { name: "Psychosocial Support", href: "/services/psychosocial" },
+                  { name: "Healthcare Jobs", href: "/jobs/healthcare" },
+                  { name: "Construction Jobs", href: "/jobs/construction" },
+                  { name: "IT & Technology", href: "/jobs/technology" },
+                  { name: "Hospitality Jobs", href: "/jobs/hospitality" },
                 ],
               },
               {
-                title: "Resources",
+                title: "For Job Seekers",
                 links: [
-                  { name: "Downloads", href: "/resources/downloads" },
-                  { name: "FAQ", href: "/resources/faq" },
-                  { name: "Guides & Manuals", href: "/resources/guides" },
-                  { name: "Forms", href: "/resources/forms" },
+                  { name: "Browse Jobs", href: "/jobs" },
+                  { name: "Create Profile", href: "/register" },
+                  { name: "Application Status", href: "/dashboard" },
+                  { name: "Career Resources", href: "/resources" },
                 ],
               },
             ].map((section, index) => (
@@ -840,17 +845,17 @@ export default function HomePage() {
                 </li>
                 <li className="flex items-center">
                   <Mail className="w-4 h-4 mr-3" />
-                  info@mrc.go.tz
+                  careers@mrc.go.tz
                 </li>
                 <li className="flex items-center">
                   <MapPin className="w-4 h-4 mr-3" />
                   Dar es Salaam, Tanzania
                 </li>
               </ul>
-              <div className="mt-6 p-4 bg-red-500/20 rounded-2xl border border-red-400/30">
-                <h5 className="font-semibold mb-2 text-red-300">Emergency Hotline</h5>
-                <p className="text-red-200 font-bold text-lg">+255 911 HELP (4357)</p>
-                <p className="text-xs text-red-300">Available 24/7</p>
+              <div className="mt-6 p-4 bg-green-500/20 rounded-2xl border border-green-400/30">
+                <h5 className="font-semibold mb-2 text-green-300">Career Hotline</h5>
+                <p className="text-green-200 font-bold text-lg">+255 800 JOBS</p>
+                <p className="text-xs text-green-300">Available 24/7</p>
               </div>
             </div>
           </div>
