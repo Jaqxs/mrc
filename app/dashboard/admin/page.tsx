@@ -1,41 +1,50 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
+  Globe,
+  Bell,
+  Settings,
+  LogOut,
+  Shield,
+  BarChart3,
   Users,
   UserPlus,
-  Settings,
-  BarChart3,
-  Shield,
   Database,
-  Bell,
-  LogOut,
-  Globe,
+  TrendingUp,
+  Activity,
+  AlertCircle,
+  CheckCircle,
+  Search,
   Eye,
   Edit,
   Trash2,
   Download,
   Upload,
-  Search,
-  CheckCircle,
-  AlertCircle,
-  TrendingUp,
-  Activity,
+  FileText,
+  Briefcase,
+  Calendar,
+  MapPin,
+  DollarSign,
+  Clock,
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
 } from "lucide-react"
-import Link from "next/link"
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("overview")
 
   const systemStats = {
-    totalUsers: 1247,
-    activeStaff: 23,
-    totalCases: 892,
+    totalApplications: 1247,
+    activeJobs: 23,
+    totalJobSeekers: 892,
     monthlyGrowth: 12.5,
     systemUptime: 99.8,
     storageUsed: 67.3,
@@ -46,63 +55,115 @@ export default function AdminDashboard() {
       id: 1,
       name: "Sarah Johnson",
       email: "sarah.johnson@mrc.org",
-      role: "Case Worker",
+      role: "Recruitment Specialist",
       status: "active",
       lastLogin: "2024-01-22 09:30",
-      casesAssigned: 15,
+      applicationsManaged: 15,
     },
     {
       id: 2,
       name: "Michael Chen",
       email: "michael.chen@mrc.org",
-      role: "Senior Case Worker",
+      role: "Senior Recruiter",
       status: "active",
       lastLogin: "2024-01-22 08:15",
-      casesAssigned: 22,
+      applicationsManaged: 22,
     },
     {
       id: 3,
       name: "Emma Rodriguez",
       email: "emma.rodriguez@mrc.org",
-      role: "Legal Advisor",
+      role: "HR Manager",
       status: "inactive",
       lastLogin: "2024-01-20 16:45",
-      casesAssigned: 8,
+      applicationsManaged: 8,
+    },
+  ]
+
+  const jobApplications = [
+    {
+      id: 1,
+      applicantName: "John Doe",
+      email: "john.doe@email.com",
+      jobTitle: "Software Engineer - Dubai",
+      appliedDate: "2024-01-22",
+      status: "pending",
+      experience: "5 years",
+      location: "Kenya",
+      salary: "$80,000",
+    },
+    {
+      id: 2,
+      applicantName: "Jane Smith",
+      email: "jane.smith@email.com",
+      jobTitle: "Nurse - Saudi Arabia",
+      appliedDate: "2024-01-21",
+      status: "approved",
+      experience: "3 years",
+      location: "Uganda",
+      salary: "$45,000",
+    },
+    {
+      id: 3,
+      applicantName: "Ahmed Hassan",
+      email: "ahmed.hassan@email.com",
+      jobTitle: "Construction Worker - Qatar",
+      appliedDate: "2024-01-20",
+      status: "rejected",
+      experience: "7 years",
+      location: "Ethiopia",
+      salary: "$35,000",
+    },
+    {
+      id: 4,
+      applicantName: "Mary Wanjiku",
+      email: "mary.wanjiku@email.com",
+      jobTitle: "Teacher - UAE",
+      appliedDate: "2024-01-19",
+      status: "interview",
+      experience: "4 years",
+      location: "Kenya",
+      salary: "$50,000",
     },
   ]
 
   const recentActivities = [
     {
       id: 1,
-      type: "user_registration",
-      description: "New migrant worker registered: John Doe",
+      type: "application_submitted",
+      description: "New job application: John Doe for Software Engineer position",
       timestamp: "2 hours ago",
       severity: "info",
     },
     {
       id: 2,
-      type: "system_alert",
-      description: "Database backup completed successfully",
+      type: "job_posted",
+      description: "New job posted: Marketing Manager - Dubai",
       timestamp: "4 hours ago",
       severity: "success",
     },
     {
       id: 3,
-      type: "security_alert",
-      description: "Failed login attempts detected",
+      type: "application_approved",
+      description: "Application approved: Jane Smith for Nurse position",
       timestamp: "6 hours ago",
-      severity: "warning",
+      severity: "success",
     },
   ]
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
+      case "approved":
         return "bg-green-100 text-green-800"
       case "inactive":
-        return "bg-gray-100 text-gray-800"
+      case "pending":
+        return "bg-yellow-100 text-yellow-800"
       case "suspended":
+      case "rejected":
         return "bg-red-100 text-red-800"
+      case "interview":
+        return "bg-blue-100 text-blue-800"
       default:
         return "bg-gray-100 text-gray-800"
     }
@@ -123,6 +184,21 @@ export default function AdminDashboard() {
     }
   }
 
+  const getStatusIcon = (status: string) => {
+    switch (status) {
+      case "approved":
+        return <CheckCircle2 className="w-4 h-4 text-green-600" />
+      case "rejected":
+        return <XCircle className="w-4 h-4 text-red-600" />
+      case "interview":
+        return <Calendar className="w-4 h-4 text-blue-600" />
+      case "pending":
+        return <Clock className="w-4 h-4 text-yellow-600" />
+      default:
+        return <AlertTriangle className="w-4 h-4 text-gray-600" />
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -134,7 +210,7 @@ export default function AdminDashboard() {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                   <Globe className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">MRC Portal</span>
+                <span className="text-xl font-bold text-gray-900">MRC Recruitment</span>
               </Link>
               <Badge className="bg-purple-100 text-purple-800 hover:bg-purple-100">Admin Dashboard</Badge>
             </div>
@@ -178,6 +254,22 @@ export default function AdminDashboard() {
                 Overview
               </Button>
               <Button
+                variant={activeTab === "applications" ? "default" : "ghost"}
+                className="w-full justify-start"
+                onClick={() => setActiveTab("applications")}
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Job Applications
+              </Button>
+              <Button
+                variant={activeTab === "jobs" ? "default" : "ghost"}
+                className="w-full justify-start"
+                onClick={() => setActiveTab("jobs")}
+              >
+                <Briefcase className="w-4 h-4 mr-2" />
+                Job Management
+              </Button>
+              <Button
                 variant={activeTab === "users" ? "default" : "ghost"}
                 className="w-full justify-start"
                 onClick={() => setActiveTab("users")}
@@ -219,7 +311,7 @@ export default function AdminDashboard() {
             <div className="space-y-6">
               <div>
                 <h1 className="text-2xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
-                <p className="text-gray-600">System overview and administrative controls</p>
+                <p className="text-gray-600">Recruitment agency overview and administrative controls</p>
               </div>
 
               {/* System Stats */}
@@ -228,10 +320,12 @@ export default function AdminDashboard() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-gray-600">Total Users</p>
-                        <p className="text-2xl font-bold text-gray-900">{systemStats.totalUsers.toLocaleString()}</p>
+                        <p className="text-sm font-medium text-gray-600">Total Applications</p>
+                        <p className="text-2xl font-bold text-gray-900">
+                          {systemStats.totalApplications.toLocaleString()}
+                        </p>
                       </div>
-                      <Users className="w-8 h-8 text-blue-600" />
+                      <FileText className="w-8 h-8 text-blue-600" />
                     </div>
                     <div className="flex items-center mt-2">
                       <TrendingUp className="w-4 h-4 text-green-600 mr-1" />
@@ -244,10 +338,10 @@ export default function AdminDashboard() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-gray-600">Active Staff</p>
-                        <p className="text-2xl font-bold text-gray-900">{systemStats.activeStaff}</p>
+                        <p className="text-sm font-medium text-gray-600">Active Jobs</p>
+                        <p className="text-2xl font-bold text-gray-900">{systemStats.activeJobs}</p>
                       </div>
-                      <UserPlus className="w-8 h-8 text-green-600" />
+                      <Briefcase className="w-8 h-8 text-green-600" />
                     </div>
                   </CardContent>
                 </Card>
@@ -256,10 +350,10 @@ export default function AdminDashboard() {
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-gray-600">Total Cases</p>
-                        <p className="text-2xl font-bold text-gray-900">{systemStats.totalCases}</p>
+                        <p className="text-sm font-medium text-gray-600">Job Seekers</p>
+                        <p className="text-2xl font-bold text-gray-900">{systemStats.totalJobSeekers}</p>
                       </div>
-                      <BarChart3 className="w-8 h-8 text-purple-600" />
+                      <Users className="w-8 h-8 text-purple-600" />
                     </div>
                   </CardContent>
                 </Card>
@@ -305,8 +399,8 @@ export default function AdminDashboard() {
               <div className="grid lg:grid-cols-2 gap-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Recent System Activity</CardTitle>
-                    <CardDescription>Latest system events and alerts</CardDescription>
+                    <CardTitle>Recent Activity</CardTitle>
+                    <CardDescription>Latest recruitment activities and alerts</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
@@ -361,12 +455,152 @@ export default function AdminDashboard() {
             </div>
           )}
 
+          {activeTab === "applications" && (
+            <div className="space-y-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">Job Applications</h1>
+                  <p className="text-gray-600">Review and manage job applications from candidates</p>
+                </div>
+                <div className="flex space-x-2">
+                  <Button variant="outline">
+                    <Download className="w-4 h-4 mr-2" />
+                    Export Applications
+                  </Button>
+                  <Button>
+                    <FileText className="w-4 h-4 mr-2" />
+                    Generate Report
+                  </Button>
+                </div>
+              </div>
+
+              {/* Search and Filters */}
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row gap-4">
+                    <div className="flex-1">
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                        <Input placeholder="Search applications by name, job title, or email..." className="pl-10" />
+                      </div>
+                    </div>
+                    <Select>
+                      <SelectTrigger className="w-48">
+                        <SelectValue placeholder="Status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Status</SelectItem>
+                        <SelectItem value="pending">Pending</SelectItem>
+                        <SelectItem value="approved">Approved</SelectItem>
+                        <SelectItem value="rejected">Rejected</SelectItem>
+                        <SelectItem value="interview">Interview</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Select>
+                      <SelectTrigger className="w-48">
+                        <SelectValue placeholder="Job Category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Categories</SelectItem>
+                        <SelectItem value="healthcare">Healthcare</SelectItem>
+                        <SelectItem value="construction">Construction</SelectItem>
+                        <SelectItem value="technology">Technology</SelectItem>
+                        <SelectItem value="education">Education</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Applications List */}
+              <div className="space-y-4">
+                {jobApplications.map((application) => (
+                  <Card key={application.id}>
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                          <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <Users className="w-6 h-6 text-blue-600" />
+                          </div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900">{application.applicantName}</h3>
+                            <p className="text-sm text-gray-600">{application.email}</p>
+                            <p className="text-sm font-medium text-blue-600">{application.jobTitle}</p>
+                            <div className="flex items-center space-x-4 mt-2">
+                              <div className="flex items-center space-x-1">
+                                <MapPin className="w-3 h-3 text-gray-400" />
+                                <span className="text-xs text-gray-500">{application.location}</span>
+                              </div>
+                              <div className="flex items-center space-x-1">
+                                <Briefcase className="w-3 h-3 text-gray-400" />
+                                <span className="text-xs text-gray-500">{application.experience}</span>
+                              </div>
+                              <div className="flex items-center space-x-1">
+                                <DollarSign className="w-3 h-3 text-gray-400" />
+                                <span className="text-xs text-gray-500">{application.salary}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-center space-x-4">
+                          <div className="text-right">
+                            <div className="flex items-center space-x-2 mb-2">
+                              {getStatusIcon(application.status)}
+                              <Badge className={getStatusColor(application.status)}>{application.status}</Badge>
+                            </div>
+                            <p className="text-xs text-gray-500">Applied: {application.appliedDate}</p>
+                          </div>
+                          <div className="flex space-x-2">
+                            <Button variant="outline" size="sm">
+                              <Eye className="w-4 h-4 mr-2" />
+                              View
+                            </Button>
+                            {application.status === "pending" && (
+                              <>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="text-green-600 border-green-600 hover:bg-green-50 bg-transparent"
+                                >
+                                  <CheckCircle2 className="w-4 h-4 mr-2" />
+                                  Approve
+                                </Button>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="text-red-600 border-red-600 hover:bg-red-50 bg-transparent"
+                                >
+                                  <XCircle className="w-4 h-4 mr-2" />
+                                  Reject
+                                </Button>
+                              </>
+                            )}
+                            {application.status === "approved" && (
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
+                              >
+                                <Calendar className="w-4 h-4 mr-2" />
+                                Schedule Interview
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          )}
+
           {activeTab === "staff" && (
             <div className="space-y-6">
               <div className="flex justify-between items-center">
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900">Staff Management</h1>
-                  <p className="text-gray-600">Manage MRC staff accounts and permissions</p>
+                  <p className="text-gray-600">Manage recruitment agency staff accounts and permissions</p>
                 </div>
                 <Button>
                   <UserPlus className="w-4 h-4 mr-2" />
@@ -390,9 +624,9 @@ export default function AdminDashboard() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="all">All Roles</SelectItem>
-                        <SelectItem value="case-worker">Case Worker</SelectItem>
-                        <SelectItem value="senior-case-worker">Senior Case Worker</SelectItem>
-                        <SelectItem value="legal-advisor">Legal Advisor</SelectItem>
+                        <SelectItem value="recruitment-specialist">Recruitment Specialist</SelectItem>
+                        <SelectItem value="senior-recruiter">Senior Recruiter</SelectItem>
+                        <SelectItem value="hr-manager">HR Manager</SelectItem>
                         <SelectItem value="admin">Administrator</SelectItem>
                       </SelectContent>
                     </Select>
@@ -432,7 +666,7 @@ export default function AdminDashboard() {
                         </div>
                         <div className="flex items-center space-x-4">
                           <div className="text-right text-sm text-gray-500">
-                            <p>{staff.casesAssigned} cases assigned</p>
+                            <p>{staff.applicationsManaged} applications managed</p>
                             <p>Last login: {staff.lastLogin}</p>
                           </div>
                           <div className="flex space-x-2">
