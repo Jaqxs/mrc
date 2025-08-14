@@ -42,19 +42,19 @@ export default function ResourcesPage() {
 
   const resourceCategories = [
     { id: "all", name: "All Resources", count: 45, icon: BookOpen, color: "from-blue-500 to-blue-600" },
-    { id: "forms", name: "Forms & Documents", count: 12, icon: FileText, color: "from-green-500 to-green-600" },
-    { id: "guides", name: "Guides & Manuals", count: 8, icon: BookOpen, color: "from-purple-500 to-purple-600" },
+    { id: "cv-resume", name: "CV & Resume Tools", count: 12, icon: FileText, color: "from-green-500 to-green-600" },
+    { id: "interview", name: "Interview Guides", count: 8, icon: BookOpen, color: "from-purple-500 to-purple-600" },
     { id: "videos", name: "Training Videos", count: 15, icon: Video, color: "from-red-500 to-red-600" },
-    { id: "legal", name: "Legal Resources", count: 10, icon: Shield, color: "from-orange-500 to-orange-600" },
+    { id: "visa-docs", name: "Visa & Documentation", count: 10, icon: Shield, color: "from-orange-500 to-orange-600" },
   ]
 
   const featuredResources = [
     {
       id: 1,
-      title: "Complete Migration Guide 2024",
-      description: "Comprehensive guide covering all aspects of safe migration with updated regulations and procedures",
+      title: "Complete Overseas Job Search Guide 2024",
+      description: "Comprehensive guide covering all aspects of finding and securing overseas employment opportunities",
       type: "PDF Guide",
-      category: "guides",
+      category: "interview",
       size: "2.5 MB",
       downloads: 15420,
       rating: 4.9,
@@ -65,22 +65,22 @@ export default function ResourcesPage() {
     },
     {
       id: 2,
-      title: "Pre-Departure Checklist",
-      description: "Essential checklist to ensure you're fully prepared before departure with interactive elements",
-      type: "Interactive PDF",
-      category: "forms",
+      title: "CV Builder & Templates",
+      description: "Professional CV templates and builder tool specifically designed for overseas job applications",
+      type: "Interactive Tool",
+      category: "cv-resume",
       size: "1.2 MB",
       downloads: 8930,
       rating: 4.8,
       featured: true,
       image: "bg-gradient-to-br from-green-500 to-green-600",
-      tags: ["Checklist", "Interactive", "Essential"],
+      tags: ["Templates", "Interactive", "Professional"],
       lastUpdated: "Jan 10, 2024",
     },
     {
       id: 3,
-      title: "Know Your Rights Video Series",
-      description: "Comprehensive video series covering migrant worker rights and legal protections",
+      title: "Interview Success Video Series",
+      description: "Comprehensive video series covering interview techniques for overseas job opportunities",
       type: "Video Series",
       category: "videos",
       size: "450 MB",
@@ -88,7 +88,7 @@ export default function ResourcesPage() {
       rating: 4.7,
       featured: true,
       image: "bg-gradient-to-br from-red-500 to-red-600",
-      tags: ["Video", "Rights", "Legal"],
+      tags: ["Video", "Interview", "Success"],
       lastUpdated: "Jan 8, 2024",
     },
   ]
@@ -96,80 +96,80 @@ export default function ResourcesPage() {
   const resources = [
     {
       id: 4,
-      title: "Employment Contract Template",
-      description: "Standard employment contract template with legal annotations and guidance notes",
-      type: "Word Document",
-      category: "forms",
+      title: "Employment Contract Review Guide",
+      description: "Essential guide for reviewing and understanding overseas employment contracts",
+      type: "PDF Guide",
+      category: "visa-docs",
       size: "850 KB",
       downloads: 6780,
       rating: 4.6,
       image: "bg-gradient-to-br from-purple-500 to-purple-600",
-      tags: ["Contract", "Template", "Legal"],
+      tags: ["Contract", "Review", "Legal"],
       lastUpdated: "Jan 12, 2024",
     },
     {
       id: 5,
-      title: "Financial Planning Workbook",
-      description: "Interactive workbook for managing finances and remittances with calculation tools",
+      title: "Salary Negotiation Workbook",
+      description: "Interactive workbook for negotiating salaries and benefits for overseas positions",
       type: "Excel Workbook",
-      category: "guides",
+      category: "interview",
       size: "1.8 MB",
       downloads: 4520,
       rating: 4.5,
       image: "bg-gradient-to-br from-teal-500 to-teal-600",
-      tags: ["Finance", "Planning", "Interactive"],
+      tags: ["Salary", "Negotiation", "Interactive"],
       lastUpdated: "Jan 5, 2024",
     },
     {
       id: 6,
-      title: "Emergency Contact Form",
-      description: "Essential emergency contact information form for all migrant workers",
-      type: "PDF Form",
-      category: "forms",
+      title: "Visa Application Checklist",
+      description: "Complete checklist for visa applications and required documentation",
+      type: "PDF Checklist",
+      category: "visa-docs",
       size: "320 KB",
       downloads: 9840,
       rating: 4.8,
       image: "bg-gradient-to-br from-red-500 to-red-600",
-      tags: ["Emergency", "Contact", "Essential"],
+      tags: ["Visa", "Checklist", "Essential"],
       lastUpdated: "Jan 18, 2024",
     },
     {
       id: 7,
-      title: "Cultural Adaptation Guide",
-      description: "Comprehensive guide to adapting to new cultures and work environments",
+      title: "Cultural Workplace Guide",
+      description: "Guide to understanding workplace cultures in different countries",
       type: "PDF Guide",
-      category: "guides",
+      category: "interview",
       size: "3.2 MB",
       downloads: 7230,
       rating: 4.4,
       image: "bg-gradient-to-br from-indigo-500 to-indigo-600",
-      tags: ["Culture", "Adaptation", "Guide"],
+      tags: ["Culture", "Workplace", "Guide"],
       lastUpdated: "Dec 28, 2023",
     },
     {
       id: 8,
-      title: "Legal Aid Request Form",
-      description: "Official form to request legal assistance and support services",
+      title: "Skills Assessment Form",
+      description: "Self-assessment form to evaluate your skills for overseas job opportunities",
       type: "PDF Form",
-      category: "legal",
+      category: "cv-resume",
       size: "450 KB",
       downloads: 3420,
       rating: 4.7,
       image: "bg-gradient-to-br from-orange-500 to-orange-600",
-      tags: ["Legal", "Request", "Official"],
+      tags: ["Skills", "Assessment", "Self-Evaluation"],
       lastUpdated: "Jan 14, 2024",
     },
     {
       id: 9,
-      title: "Safety Training Video",
-      description: "Workplace safety training video with multilingual subtitles",
+      title: "Job Interview Preparation Video",
+      description: "Professional interview preparation video with tips for overseas job interviews",
       type: "MP4 Video",
       category: "videos",
       size: "125 MB",
       downloads: 5670,
       rating: 4.6,
       image: "bg-gradient-to-br from-yellow-500 to-yellow-600",
-      tags: ["Safety", "Training", "Multilingual"],
+      tags: ["Interview", "Preparation", "Professional"],
       lastUpdated: "Jan 3, 2024",
     },
   ]
@@ -326,15 +326,13 @@ export default function ResourcesPage() {
               <span className="font-semibold">Resource Library</span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold mb-8 leading-tight">
-              Essential <span className="text-blue-200">Resources</span>
-              <span className="block text-3xl lg:text-4xl font-normal text-blue-100 mt-4">
-                For Your Migration Journey
-              </span>
+            <h1 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+              Job Search <span className="text-blue-200">Resources</span>
+              <span className="block text-3xl lg:text-4xl font-normal text-blue-100 mt-4">For Your Career Journey</span>
             </h1>
             <p className="text-xl lg:text-2xl mb-10 text-blue-100 leading-relaxed max-w-4xl mx-auto">
-              Access comprehensive guides, forms, training materials, and legal resources designed to support you at
-              every stage of your migration journey.
+              Access comprehensive guides, CV templates, interview preparation materials, and visa resources designed to
+              help you secure overseas employment opportunities.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button
@@ -665,11 +663,12 @@ export default function ResourcesPage() {
           <div className="text-center mb-12">
             <div className="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-md rounded-full mb-6 border border-white/20">
               <Heart className="w-5 h-5 mr-2 text-red-200" />
-              <span className="font-semibold">Emergency Resources</span>
+              <span className="font-semibold">Career Support</span>
             </div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Need Immediate Help?</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Need Career Guidance?</h2>
             <p className="text-xl text-red-100 max-w-3xl mx-auto">
-              Access emergency contacts, crisis support resources, and immediate assistance guides
+              Access career counseling, job search support, and professional guidance for your overseas employment
+              journey
             </p>
           </div>
 
@@ -743,23 +742,23 @@ export default function ResourcesPage() {
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <Link href="/services/pre-departure" className="hover:text-white transition-colors">
-                    Pre-Departure Services
+                  <Link href="/services/job-placement" className="hover:text-white transition-colors">
+                    Job Placement
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/legal" className="hover:text-white transition-colors">
-                    Legal Aid
+                  <Link href="/services/visa-assistance" className="hover:text-white transition-colors">
+                    Visa Assistance
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/reintegration" className="hover:text-white transition-colors">
-                    Reintegration Support
+                  <Link href="/services/career-counseling" className="hover:text-white transition-colors">
+                    Career Counseling
                   </Link>
                 </li>
                 <li>
-                  <Link href="/services/psychosocial" className="hover:text-white transition-colors">
-                    Psychosocial Support
+                  <Link href="/services/interview-prep" className="hover:text-white transition-colors">
+                    Interview Preparation
                   </Link>
                 </li>
               </ul>
@@ -769,23 +768,23 @@ export default function ResourcesPage() {
               <h4 className="font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
-                  <Link href="/resources/downloads" className="hover:text-white transition-colors">
-                    Downloads
+                  <Link href="/resources/cv-templates" className="hover:text-white transition-colors">
+                    CV Templates
                   </Link>
                 </li>
                 <li>
-                  <Link href="/resources/faq" className="hover:text-white transition-colors">
-                    FAQ
+                  <Link href="/resources/interview-guides" className="hover:text-white transition-colors">
+                    Interview Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/resources/guides" className="hover:text-white transition-colors">
-                    Guides & Manuals
+                  <Link href="/resources/visa-info" className="hover:text-white transition-colors">
+                    Visa Information
                   </Link>
                 </li>
                 <li>
-                  <Link href="/resources/forms" className="hover:text-white transition-colors">
-                    Forms
+                  <Link href="/resources/job-search-tips" className="hover:text-white transition-colors">
+                    Job Search Tips
                   </Link>
                 </li>
               </ul>

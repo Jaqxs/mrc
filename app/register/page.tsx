@@ -9,8 +9,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
+import { Textarea } from "@/components/ui/textarea"
 import {
-  Globe,
+  Briefcase,
   Eye,
   EyeOff,
   ArrowLeft,
@@ -20,10 +21,10 @@ import {
   Mail,
   User,
   FileText,
-  Shield,
   CheckCircle,
   AlertCircle,
   Info,
+  GraduationCap,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -38,9 +39,12 @@ export default function RegisterPage() {
     password: "",
     confirmPassword: "",
     nationality: "",
-    idType: "",
-    idNumber: "",
-    migrationPhase: "",
+    currentLocation: "",
+    education: "",
+    experience: "",
+    skills: "",
+    preferredCountries: "",
+    jobCategories: "",
     agreeTerms: false,
     agreePrivacy: false,
   })
@@ -64,11 +68,11 @@ export default function RegisterPage() {
             <div className="flex items-center space-x-6">
               <span className="flex items-center">
                 <Phone className="w-3 h-3 mr-1" />
-                Emergency: +255 123 456 789
+                Support: +255 123 456 789
               </span>
               <span className="flex items-center">
                 <Mail className="w-3 h-3 mr-1" />
-                info@mrc.go.tz
+                careers@mrc.go.tz
               </span>
             </div>
             <div className="flex items-center space-x-4">
@@ -89,16 +93,19 @@ export default function RegisterPage() {
           <div className="flex items-center justify-between py-4">
             <Link href="/" className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-7 h-7 text-white" />
+                <Briefcase className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">MRC PORTAL</h1>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">Migrant Resource Centre</p>
+                <h1 className="text-xl font-bold text-gray-900">MRC CAREERS</h1>
+                <p className="text-xs text-gray-500 uppercase tracking-wide">Global Job Recruitment</p>
               </div>
             </Link>
             <nav className="hidden lg:flex items-center space-x-8">
               <Link href="/" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Home
+              </Link>
+              <Link href="/jobs" className="text-gray-700 hover:text-blue-600 transition-colors">
+                Jobs
               </Link>
               <Link href="/services" className="text-gray-700 hover:text-blue-600 transition-colors">
                 Services
@@ -142,10 +149,10 @@ export default function RegisterPage() {
                     <div>
                       <CardTitle className="text-2xl flex items-center">
                         <User className="w-6 h-6 mr-2" />
-                        Register for MRC Portal
+                        Create Your Job Seeker Account
                       </CardTitle>
                       <CardDescription className="text-blue-100">
-                        Create your account to access migrant worker services
+                        Join thousands finding overseas employment opportunities
                       </CardDescription>
                     </div>
                     <Badge variant="secondary" className="bg-white text-blue-600">
@@ -204,7 +211,7 @@ export default function RegisterPage() {
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="h-11"
                         />
-                        <p className="text-xs text-gray-500">We'll use this to send you important updates</p>
+                        <p className="text-xs text-gray-500">We'll use this to send you job alerts and updates</p>
                       </div>
 
                       <div className="space-y-2">
@@ -222,28 +229,42 @@ export default function RegisterPage() {
                         <p className="text-xs text-gray-500">Include country code (e.g., +255 for Tanzania)</p>
                       </div>
 
-                      <div className="space-y-2">
-                        <Label htmlFor="nationality" className="text-sm font-medium">
-                          Nationality <span className="text-red-500">*</span>
-                        </Label>
-                        <Select
-                          value={formData.nationality}
-                          onValueChange={(value) => setFormData({ ...formData, nationality: value })}
-                        >
-                          <SelectTrigger className="h-11">
-                            <SelectValue placeholder="Select your nationality" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="tanzania">Tanzania</SelectItem>
-                            <SelectItem value="kenya">Kenya</SelectItem>
-                            <SelectItem value="uganda">Uganda</SelectItem>
-                            <SelectItem value="rwanda">Rwanda</SelectItem>
-                            <SelectItem value="burundi">Burundi</SelectItem>
-                            <SelectItem value="ethiopia">Ethiopia</SelectItem>
-                            <SelectItem value="somalia">Somalia</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="nationality" className="text-sm font-medium">
+                            Nationality <span className="text-red-500">*</span>
+                          </Label>
+                          <Select
+                            value={formData.nationality}
+                            onValueChange={(value) => setFormData({ ...formData, nationality: value })}
+                          >
+                            <SelectTrigger className="h-11">
+                              <SelectValue placeholder="Select nationality" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="tanzania">Tanzania</SelectItem>
+                              <SelectItem value="kenya">Kenya</SelectItem>
+                              <SelectItem value="uganda">Uganda</SelectItem>
+                              <SelectItem value="rwanda">Rwanda</SelectItem>
+                              <SelectItem value="burundi">Burundi</SelectItem>
+                              <SelectItem value="ethiopia">Ethiopia</SelectItem>
+                              <SelectItem value="somalia">Somalia</SelectItem>
+                              <SelectItem value="other">Other</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="currentLocation" className="text-sm font-medium">
+                            Current Location <span className="text-red-500">*</span>
+                          </Label>
+                          <Input
+                            id="currentLocation"
+                            placeholder="City, Country"
+                            value={formData.currentLocation}
+                            onChange={(e) => setFormData({ ...formData, currentLocation: e.target.value })}
+                            className="h-11"
+                          />
+                        </div>
                       </div>
                     </div>
                   )}
@@ -251,8 +272,8 @@ export default function RegisterPage() {
                   {step === 2 && (
                     <div className="space-y-6">
                       <div className="text-center mb-6">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Identification Details</h3>
-                        <p className="text-gray-600">Provide your identification information</p>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Professional Background</h3>
+                        <p className="text-gray-600">Tell us about your education and work experience</p>
                       </div>
 
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -261,70 +282,71 @@ export default function RegisterPage() {
                           <div>
                             <h4 className="font-medium text-blue-900">Why do we need this?</h4>
                             <p className="text-sm text-blue-700 mt-1">
-                              Identification details help us verify your identity and provide appropriate services based
-                              on your legal status.
+                              This information helps us match you with the right job opportunities and provide relevant
+                              career guidance.
                             </p>
                           </div>
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="idType" className="text-sm font-medium">
-                          ID Document Type <span className="text-red-500">*</span>
+                        <Label htmlFor="education" className="text-sm font-medium">
+                          Highest Education Level <span className="text-red-500">*</span>
                         </Label>
                         <Select
-                          value={formData.idType}
-                          onValueChange={(value) => setFormData({ ...formData, idType: value })}
+                          value={formData.education}
+                          onValueChange={(value) => setFormData({ ...formData, education: value })}
                         >
                           <SelectTrigger className="h-11">
-                            <SelectValue placeholder="Select your ID document type" />
+                            <SelectValue placeholder="Select your education level" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="passport">Passport</SelectItem>
-                            <SelectItem value="national-id">National ID Card</SelectItem>
-                            <SelectItem value="birth-certificate">Birth Certificate</SelectItem>
-                            <SelectItem value="voter-id">Voter ID</SelectItem>
-                            <SelectItem value="driving-license">Driving License</SelectItem>
-                            <SelectItem value="other">Other Government ID</SelectItem>
+                            <SelectItem value="primary">Primary Education</SelectItem>
+                            <SelectItem value="secondary">Secondary Education</SelectItem>
+                            <SelectItem value="certificate">Certificate/Diploma</SelectItem>
+                            <SelectItem value="bachelor">Bachelor's Degree</SelectItem>
+                            <SelectItem value="master">Master's Degree</SelectItem>
+                            <SelectItem value="phd">PhD/Doctorate</SelectItem>
+                            <SelectItem value="vocational">Vocational Training</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="idNumber" className="text-sm font-medium">
-                          ID Number <span className="text-red-500">*</span>
+                        <Label htmlFor="experience" className="text-sm font-medium">
+                          Work Experience <span className="text-red-500">*</span>
                         </Label>
-                        <Input
-                          id="idNumber"
-                          placeholder="Enter your ID number"
-                          value={formData.idNumber}
-                          onChange={(e) => setFormData({ ...formData, idNumber: e.target.value })}
-                          className="h-11"
+                        <Select
+                          value={formData.experience}
+                          onValueChange={(value) => setFormData({ ...formData, experience: value })}
+                        >
+                          <SelectTrigger className="h-11">
+                            <SelectValue placeholder="Select your experience level" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="entry">Entry Level (0-1 years)</SelectItem>
+                            <SelectItem value="junior">Junior (1-3 years)</SelectItem>
+                            <SelectItem value="mid">Mid-Level (3-5 years)</SelectItem>
+                            <SelectItem value="senior">Senior (5-10 years)</SelectItem>
+                            <SelectItem value="expert">Expert (10+ years)</SelectItem>
+                            <SelectItem value="student">Student/Fresh Graduate</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="skills" className="text-sm font-medium">
+                          Key Skills <span className="text-red-500">*</span>
+                        </Label>
+                        <Textarea
+                          id="skills"
+                          placeholder="List your main skills (e.g., Construction, Healthcare, IT, Languages, etc.)"
+                          value={formData.skills}
+                          onChange={(e) => setFormData({ ...formData, skills: e.target.value })}
+                          className="min-h-[100px]"
                         />
-                        <p className="text-xs text-gray-500">Enter the number exactly as it appears on your document</p>
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="migrationPhase" className="text-sm font-medium">
-                          Current Migration Phase <span className="text-red-500">*</span>
-                        </Label>
-                        <Select
-                          value={formData.migrationPhase}
-                          onValueChange={(value) => setFormData({ ...formData, migrationPhase: value })}
-                        >
-                          <SelectTrigger className="h-11">
-                            <SelectValue placeholder="Select your current migration phase" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="pre-departure">Pre-Departure (Planning to migrate)</SelectItem>
-                            <SelectItem value="in-destination">Currently in Destination Country</SelectItem>
-                            <SelectItem value="returnee">Returnee (Recently returned home)</SelectItem>
-                            <SelectItem value="transit">In Transit</SelectItem>
-                            <SelectItem value="family">Family Member of Migrant</SelectItem>
-                          </SelectContent>
-                        </Select>
                         <p className="text-xs text-gray-500">
-                          This helps us provide relevant services for your situation
+                          Separate skills with commas. Include technical skills, languages, and certifications.
                         </p>
                       </div>
                     </div>
@@ -333,8 +355,40 @@ export default function RegisterPage() {
                   {step === 3 && (
                     <div className="space-y-6">
                       <div className="text-center mb-6">
-                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Account Security</h3>
-                        <p className="text-gray-600">Create a secure password for your account</p>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-2">Job Preferences</h3>
+                        <p className="text-gray-600">Tell us about your ideal job opportunities</p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="preferredCountries" className="text-sm font-medium">
+                          Preferred Work Countries <span className="text-red-500">*</span>
+                        </Label>
+                        <Textarea
+                          id="preferredCountries"
+                          placeholder="List countries where you'd like to work (e.g., UAE, Saudi Arabia, Qatar, Canada, etc.)"
+                          value={formData.preferredCountries}
+                          onChange={(e) => setFormData({ ...formData, preferredCountries: e.target.value })}
+                          className="min-h-[80px]"
+                        />
+                        <p className="text-xs text-gray-500">
+                          Separate countries with commas. We'll prioritize opportunities in these locations.
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="jobCategories" className="text-sm font-medium">
+                          Interested Job Categories <span className="text-red-500">*</span>
+                        </Label>
+                        <Textarea
+                          id="jobCategories"
+                          placeholder="Select job categories you're interested in (e.g., Healthcare, Construction, Hospitality, IT, etc.)"
+                          value={formData.jobCategories}
+                          onChange={(e) => setFormData({ ...formData, jobCategories: e.target.value })}
+                          className="min-h-[80px]"
+                        />
+                        <p className="text-xs text-gray-500">
+                          This helps us send you relevant job alerts and opportunities.
+                        </p>
                       </div>
 
                       <div className="space-y-2">
@@ -385,19 +439,6 @@ export default function RegisterPage() {
                           className="h-11"
                         />
                       </div>
-
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                        <div className="flex items-start">
-                          <Shield className="w-5 h-5 text-green-600 mr-2 mt-0.5" />
-                          <div>
-                            <h4 className="font-medium text-green-900">Security Notice</h4>
-                            <p className="text-sm text-green-700 mt-1">
-                              Your password is encrypted and stored securely. We will never share your login credentials
-                              with anyone.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   )}
 
@@ -409,26 +450,26 @@ export default function RegisterPage() {
                       </div>
 
                       <div className="bg-gray-50 border rounded-lg p-6 max-h-64 overflow-y-auto">
-                        <h4 className="font-semibold text-gray-900 mb-3">MRC Portal Terms of Service</h4>
+                        <h4 className="font-semibold text-gray-900 mb-3">MRC Careers Terms of Service</h4>
                         <div className="text-sm text-gray-700 space-y-3">
                           <p>
-                            By registering for the MRC Portal, you agree to provide accurate and complete information
-                            about yourself. You are responsible for maintaining the confidentiality of your account
-                            credentials.
+                            By registering for MRC Careers, you agree to provide accurate and complete information about
+                            your professional background and job preferences. You are responsible for maintaining the
+                            confidentiality of your account credentials.
                           </p>
                           <p>
-                            The MRC Portal is provided by the Government of Tanzania to assist migrant workers with
-                            accessing services and resources. All services are provided in accordance with applicable
-                            laws and regulations.
+                            MRC Careers is a job recruitment platform that connects job seekers with overseas employment
+                            opportunities. All job placements are subject to employer requirements, visa regulations,
+                            and applicable laws.
                           </p>
                           <p>
-                            Your personal information will be handled in accordance with our Privacy Policy and
-                            applicable data protection laws. We are committed to protecting your privacy and maintaining
-                            the confidentiality of your information.
+                            Your personal and professional information will be shared with potential employers and
+                            recruitment partners to facilitate job matching. We are committed to protecting your privacy
+                            and maintaining the confidentiality of your information.
                           </p>
                           <p>
-                            You agree to use the portal only for lawful purposes and in accordance with these terms.
-                            Misuse of the portal may result in account suspension or termination.
+                            You agree to use the platform only for legitimate job seeking purposes and in accordance
+                            with these terms. Misuse of the platform may result in account suspension or termination.
                           </p>
                         </div>
                       </div>
@@ -446,7 +487,7 @@ export default function RegisterPage() {
                             <Link href="/terms" className="text-blue-600 hover:underline" target="_blank">
                               Terms of Service
                             </Link>{" "}
-                            and understand my rights and responsibilities as a user of the MRC Portal.
+                            and understand my rights and responsibilities as a job seeker on the MRC Careers platform.
                           </Label>
                         </div>
 
@@ -464,8 +505,8 @@ export default function RegisterPage() {
                             <Link href="/privacy" className="text-blue-600 hover:underline" target="_blank">
                               Privacy Policy
                             </Link>{" "}
-                            and consent to the collection, processing, and storage of my personal data for the purpose
-                            of providing MRC services.
+                            and consent to sharing my profile with potential employers and recruitment partners for job
+                            matching purposes.
                           </Label>
                         </div>
                       </div>
@@ -476,8 +517,8 @@ export default function RegisterPage() {
                           <div>
                             <h4 className="font-medium text-blue-900">Data Protection</h4>
                             <p className="text-sm text-blue-700 mt-1">
-                              All your information is encrypted and stored securely in compliance with international
-                              data protection standards. You can request access to or deletion of your data at any time.
+                              All your information is encrypted and stored securely. Your profile will only be shared
+                              with verified employers and recruitment partners.
                             </p>
                           </div>
                         </div>
@@ -507,7 +548,7 @@ export default function RegisterPage() {
                         disabled={!formData.agreeTerms || !formData.agreePrivacy}
                         asChild
                       >
-                        <Link href="/dashboard/migrant">
+                        <Link href="/dashboard/jobseeker">
                           Create Account
                           <CheckCircle className="w-4 h-4 ml-2" />
                         </Link>
@@ -557,8 +598,8 @@ export default function RegisterPage() {
                         {step > 2 ? <CheckCircle className="w-4 h-4" /> : "2"}
                       </div>
                       <div>
-                        <p className="font-medium">Identification</p>
-                        <p className="text-xs text-gray-500">ID documents and migration phase</p>
+                        <p className="font-medium">Professional Background</p>
+                        <p className="text-xs text-gray-500">Education and work experience</p>
                       </div>
                     </div>
 
@@ -569,8 +610,8 @@ export default function RegisterPage() {
                         {step > 3 ? <CheckCircle className="w-4 h-4" /> : "3"}
                       </div>
                       <div>
-                        <p className="font-medium">Account Security</p>
-                        <p className="text-xs text-gray-500">Password and security settings</p>
+                        <p className="font-medium">Job Preferences</p>
+                        <p className="text-xs text-gray-500">Preferred countries and job types</p>
                       </div>
                     </div>
 
@@ -599,12 +640,12 @@ export default function RegisterPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                      <h4 className="font-semibold text-red-900 mb-2">Emergency Support</h4>
-                      <p className="text-sm text-red-700 mb-2">24/7 emergency assistance available</p>
-                      <Button size="sm" className="bg-red-600 hover:bg-red-700 w-full">
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-green-900 mb-2">Career Support</h4>
+                      <p className="text-sm text-green-700 mb-2">Get help with your job search</p>
+                      <Button size="sm" className="bg-green-600 hover:bg-green-700 w-full">
                         <Phone className="w-4 h-4 mr-2" />
-                        Call +255 911 HELP
+                        Call Career Advisor
                       </Button>
                     </div>
 
@@ -616,9 +657,9 @@ export default function RegisterPage() {
                         <FileText className="w-4 h-4 mr-2" />
                         Registration Help Guide
                       </Link>
-                      <Link href="/help/documents" className="flex items-center text-sm text-blue-600 hover:underline">
-                        <Shield className="w-4 h-4 mr-2" />
-                        Required Documents
+                      <Link href="/help/cv-tips" className="flex items-center text-sm text-blue-600 hover:underline">
+                        <GraduationCap className="w-4 h-4 mr-2" />
+                        CV Writing Tips
                       </Link>
                       <Link href="/help/contact" className="flex items-center text-sm text-blue-600 hover:underline">
                         <Mail className="w-4 h-4 mr-2" />
@@ -632,36 +673,36 @@ export default function RegisterPage() {
               {/* Benefits */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-lg">Why Register?</CardTitle>
+                  <CardTitle className="text-lg">Why Join MRC Careers?</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">Access Services</p>
-                        <p className="text-sm text-gray-600">Get pre-departure training, legal aid, and support</p>
+                        <p className="font-medium text-gray-900">Access Global Jobs</p>
+                        <p className="text-sm text-gray-600">Find overseas employment opportunities worldwide</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">Track Your Journey</p>
-                        <p className="text-sm text-gray-600">Monitor your migration process and case status</p>
+                        <p className="font-medium text-gray-900">Career Guidance</p>
+                        <p className="text-sm text-gray-600">Get expert advice on CV writing and interviews</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">24/7 Support</p>
-                        <p className="text-sm text-gray-600">Access emergency assistance anytime</p>
+                        <p className="font-medium text-gray-900">Visa Support</p>
+                        <p className="text-sm text-gray-600">Assistance with work permits and documentation</p>
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
                       <CheckCircle className="w-5 h-5 text-green-600 mt-0.5" />
                       <div>
-                        <p className="font-medium text-gray-900">Secure & Confidential</p>
-                        <p className="text-sm text-gray-600">Your information is protected and encrypted</p>
+                        <p className="font-medium text-gray-900">Secure & Trusted</p>
+                        <p className="text-sm text-gray-600">Work with verified employers and agencies</p>
                       </div>
                     </div>
                   </div>
@@ -677,16 +718,16 @@ export default function RegisterPage() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
+              <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                <Briefcase className="w-7 h-7 text-white" />
               </div>
               <div>
-                <div className="font-bold">MRC PORTAL</div>
-                <div className="text-xs text-gray-400">Migrant Resource Centre</div>
+                <div className="font-bold">MRC CAREERS</div>
+                <div className="text-xs text-gray-400">Global Job Recruitment</div>
               </div>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              © 2024 Government of Tanzania - Ministry of Labour and Employment
+              © 2024 MRC Careers - Connecting Talent with Global Opportunities
             </p>
             <div className="flex justify-center space-x-6 text-sm">
               <Link href="/privacy" className="text-gray-400 hover:text-white">
