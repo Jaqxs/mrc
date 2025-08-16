@@ -136,6 +136,23 @@ export default function JobsPage() {
     setSavedJobs((prev) => (prev.includes(jobId) ? prev.filter((id) => id !== jobId) : [...prev, jobId]))
   }
 
+  const handleApplyJob = (jobId: number) => {
+    // Redirect to job detail page for application
+    window.location.href = `/jobs/${jobId}`
+  }
+
+  const handleSearch = () => {
+    // Search functionality is already handled by the filter state
+    console.log("[v0] Search executed with query:", searchQuery)
+  }
+
+  const clearAllFilters = () => {
+    setSearchQuery("")
+    setFilterLocation("All Locations")
+    setFilterType("All Types")
+    setFilterCategory("All Categories")
+  }
+
   const filteredJobs = jobListings.filter((job) => {
     const searchMatch =
       job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -313,7 +330,20 @@ export default function JobsPage() {
                   className="pl-10 sm:pl-12 h-11 sm:h-12 border-2 border-gray-200 focus:border-blue-500 rounded-lg text-sm sm:text-base"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") {
+                      handleSearch()
+                    }
+                  }}
                 />
+                <Button
+                  size="sm"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 rounded-lg text-xs px-3"
+                  onClick={handleSearch}
+                >
+                  <span className="hidden sm:inline">Search</span>
+                  <Search className="w-4 h-4 sm:hidden" />
+                </Button>
               </div>
 
               <Select value={filterLocation} onValueChange={setFilterLocation}>
@@ -364,6 +394,19 @@ export default function JobsPage() {
                 Showing <span className="font-semibold text-blue-600">{filteredJobs.length}</span> jobs matching your
                 criteria
               </p>
+              {(searchQuery ||
+                filterLocation !== "All Locations" ||
+                filterType !== "All Types" ||
+                filterCategory !== "All Categories") && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={clearAllFilters}
+                  className="mt-2 text-gray-600 hover:text-blue-600 border-gray-300 hover:border-blue-300 bg-transparent"
+                >
+                  Clear All Filters
+                </Button>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -447,13 +490,11 @@ export default function JobsPage() {
                         </div>
 
                         <Button
-                          asChild
                           className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 w-full sm:w-auto text-sm"
+                          onClick={() => handleApplyJob(job.id)}
                         >
-                          <Link href={`/jobs/${job.id}`}>
-                            Apply Now
-                            <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
-                          </Link>
+                          Apply Now
+                          <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                         </Button>
                       </div>
                     </div>
@@ -480,7 +521,7 @@ export default function JobsPage() {
                   <CardContent className="p-4 sm:p-6">
                     <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
-                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
                           <h3 className="text-lg sm:text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
                             {job.title}
                           </h3>
@@ -545,15 +586,13 @@ export default function JobsPage() {
                         </div>
 
                         <Button
-                          asChild
                           variant="outline"
                           className="border-blue-200 text-blue-600 hover:bg-blue-50 bg-transparent text-sm w-full sm:w-auto"
+                          onClick={() => handleApplyJob(job.id)}
                         >
-                          <Link href={`/jobs/${job.id}`}>
-                            <span className="sm:hidden">Apply</span>
-                            <span className="hidden sm:inline">View Details</span>
-                            <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
-                          </Link>
+                          <span className="sm:hidden">Apply</span>
+                          <span className="hidden sm:inline">View Details</span>
+                          <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                         </Button>
                       </div>
                     </div>
@@ -573,15 +612,7 @@ export default function JobsPage() {
                 <p className="text-gray-600 mb-6 text-sm sm:text-base">
                   Try adjusting your search criteria or browse all available positions.
                 </p>
-                <Button
-                  onClick={() => {
-                    setSearchQuery("")
-                    setFilterLocation("All Locations")
-                    setFilterType("All Types")
-                    setFilterCategory("All Categories")
-                  }}
-                  className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
-                >
+                <Button onClick={clearAllFilters} className="bg-blue-600 hover:bg-blue-700 w-full sm:w-auto">
                   Clear Filters
                 </Button>
               </div>

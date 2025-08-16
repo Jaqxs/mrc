@@ -47,6 +47,69 @@ export default function ServicesPage() {
     setIsVisible(true)
   }, [])
 
+  const handleGetStarted = (serviceId: number, serviceName: string) => {
+    console.log("[v0] Get Started clicked for service:", serviceName)
+    // Redirect to registration with service pre-selected
+    window.location.href = `/register?service=${serviceId}`
+  }
+
+  const handleLearnMore = (serviceId: number, serviceName: string) => {
+    console.log("[v0] Learn More clicked for service:", serviceName)
+    const serviceRoutes: { [key: number]: string } = {
+      1: "/services/job-placement",
+      2: "/services/cv-writing",
+      3: "/services/skills-training",
+      4: "/services/career-counseling",
+      5: "/services/visa-assistance",
+      6: "/services/interview-preparation",
+      7: "/services/support",
+      8: "/services/employer-partnership",
+    }
+
+    const route = serviceRoutes[serviceId]
+    if (route) {
+      window.location.href = route
+    } else {
+      console.log("[v0] No route found for service:", serviceName)
+    }
+  }
+
+  const handleCategoryExplore = (categoryId: string, categoryName: string) => {
+    console.log("[v0] Explore category:", categoryName)
+    setSelectedCategory(categoryId)
+    // Scroll to services section
+    const servicesSection = document.querySelector(".services-grid")
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const handleWatchDemo = () => {
+    console.log("[v0] Watch Demo clicked")
+    // Could open video modal or redirect to demo page
+    alert("Demo video would play here. This could open a video modal or redirect to a demo page.")
+  }
+
+  const handleCareerSupport = () => {
+    console.log("[v0] Career Support clicked")
+    // Redirect to contact page or open support chat
+    window.location.href = "/contact"
+  }
+
+  const handleCareerCounseling = () => {
+    console.log("[v0] Career Counseling clicked")
+    // Could open booking modal or redirect to counseling page
+    alert(
+      "Career counseling booking would open here. This could show available time slots or redirect to a booking page.",
+    )
+  }
+
+  const clearAllFilters = () => {
+    setSearchTerm("")
+    setSelectedCategory("all")
+    setSelectedPhase("all")
+  }
+
   const serviceCategories = [
     { id: "all", name: "All Services", count: 12, color: "from-blue-500 to-blue-600" },
     { id: "job-placement", name: "Job Placement", count: 4, color: "from-green-500 to-green-600" },
@@ -481,6 +544,7 @@ export default function ServicesPage() {
                 size="lg"
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 bg-transparent backdrop-blur-md text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 w-full sm:w-auto"
+                onClick={handleWatchDemo}
               >
                 <PlayCircle className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                 Watch Demo
@@ -488,6 +552,7 @@ export default function ServicesPage() {
               <Button
                 size="lg"
                 className="bg-red-600 hover:bg-red-700 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 text-base sm:text-lg px-6 sm:px-10 py-3 sm:py-4 w-full sm:w-auto"
+                onClick={handleCareerSupport}
               >
                 <Phone className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                 Career Support
@@ -540,6 +605,7 @@ export default function ServicesPage() {
                     variant="secondary"
                     size="lg"
                     className="w-full bg-blue-50 text-blue-700 hover:bg-blue-100 shadow-lg group-hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
+                    onClick={() => handleCategoryExplore(category.id, category.name)}
                   >
                     Explore
                     <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
@@ -590,7 +656,7 @@ export default function ServicesPage() {
             </CardContent>
           </Card>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 services-grid">
             {filteredServices.map((service) => (
               <Card
                 key={service.id}
@@ -666,13 +732,17 @@ export default function ServicesPage() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base">
+                      <Button
+                        className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-purple-600 hover:to-blue-600 shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
+                        onClick={() => handleGetStarted(service.id, service.title)}
+                      >
                         Get Started
                         <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
                       </Button>
                       <Button
                         variant="outline"
                         className="border-2 border-blue-200 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 bg-transparent text-sm sm:text-base"
+                        onClick={() => handleLearnMore(service.id, service.title)}
                       >
                         Learn More
                       </Button>
@@ -692,14 +762,7 @@ export default function ServicesPage() {
               <p className="text-slate-600 mb-6 text-sm sm:text-base px-4">
                 Try adjusting your search criteria or browse all services
               </p>
-              <Button
-                onClick={() => {
-                  setSearchTerm("")
-                  setSelectedCategory("all")
-                  setSelectedPhase("all")
-                }}
-                className="w-full sm:w-auto"
-              >
+              <Button onClick={clearAllFilters} className="w-full sm:w-auto">
                 Clear Filters
               </Button>
             </div>
@@ -730,6 +793,7 @@ export default function ServicesPage() {
               size="lg"
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-blue-600 transition-all bg-transparent w-full sm:w-auto"
+              onClick={handleCareerCounseling}
             >
               <Headphones className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
               Career Counseling

@@ -479,17 +479,23 @@ export default function HomePage() {
                           <Button
                             size="sm"
                             className="bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
+                            asChild
                           >
-                            <Phone className="w-4 h-4 mr-2" />
-                            Call Now
+                            <Link href="/contact">
+                              <Phone className="w-4 h-4 mr-2" />
+                              Call Now
+                            </Link>
                           </Button>
                           <Button
                             size="sm"
                             variant="outline"
                             className="border-green-300 text-green-600 hover:bg-green-50 transition-all duration-300 hover:scale-105 bg-transparent w-full sm:w-auto"
+                            asChild
                           >
-                            <MessageSquare className="w-4 h-4 mr-2" />
-                            Live Chat
+                            <Link href="/contact">
+                              <MessageSquare className="w-4 h-4 mr-2" />
+                              Live Chat
+                            </Link>
                           </Button>
                         </div>
                       </div>
@@ -589,15 +595,19 @@ export default function HomePage() {
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                       <Button
                         className={`flex-1 bg-gradient-to-r ${service.color} hover:shadow-xl transition-all duration-300 hover:scale-105 text-sm sm:text-base`}
+                        asChild
                       >
-                        Get Started
-                        <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                        <Link href="/services">
+                          Get Started
+                          <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4" />
+                        </Link>
                       </Button>
                       <Button
                         variant="outline"
                         className="hover:bg-slate-50 hover:border-blue-300 transition-all duration-300 hover:scale-105 bg-transparent text-sm sm:text-base"
+                        asChild
                       >
-                        Learn More
+                        <Link href="/about">Learn More</Link>
                       </Button>
                     </div>
                   </div>
@@ -709,9 +719,12 @@ export default function HomePage() {
                             variant="ghost"
                             size="sm"
                             className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 transition-all duration-300 p-0"
+                            asChild
                           >
-                            Apply Now
-                            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                            <Link href="/jobs">
+                              Apply Now
+                              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1" />
+                            </Link>
                           </Button>
                         </div>
                       </div>
@@ -760,14 +773,38 @@ export default function HomePage() {
                 <CardContent>
                   <div className="space-y-3">
                     {[
-                      { icon: Briefcase, text: "Browse All Jobs", color: "text-blue-600", bg: "bg-blue-50" },
-                      { icon: UserCheck, text: "Application Status", color: "text-green-600", bg: "bg-green-50" },
-                      { icon: GraduationCap, text: "Career Resources", color: "text-purple-600", bg: "bg-purple-50" },
-                      { icon: Phone, text: "Contact Recruiters", color: "text-orange-600", bg: "bg-orange-50" },
+                      {
+                        icon: Briefcase,
+                        text: "Browse All Jobs",
+                        color: "text-blue-600",
+                        bg: "bg-blue-50",
+                        href: "/jobs",
+                      },
+                      {
+                        icon: UserCheck,
+                        text: "Application Status",
+                        color: "text-green-600",
+                        bg: "bg-green-50",
+                        href: "/dashboard/jobseeker",
+                      },
+                      {
+                        icon: GraduationCap,
+                        text: "Career Resources",
+                        color: "text-purple-600",
+                        bg: "bg-purple-50",
+                        href: "/resources",
+                      },
+                      {
+                        icon: Phone,
+                        text: "Contact Recruiters",
+                        color: "text-orange-600",
+                        bg: "bg-orange-50",
+                        href: "/contact",
+                      },
                     ].map((link, index) => (
                       <Link
                         key={index}
-                        href="#"
+                        href={link.href}
                         className={`flex items-center text-sm ${link.color} hover:underline transition-all duration-300 p-3 rounded-xl ${link.bg} hover:scale-105`}
                       >
                         <link.icon className="w-4 h-4 mr-3" />
@@ -849,10 +886,10 @@ export default function HomePage() {
               {
                 title: "Job Categories",
                 links: [
-                  { name: "Healthcare Jobs", href: "/jobs/healthcare" },
-                  { name: "Construction Jobs", href: "/jobs/construction" },
-                  { name: "IT & Technology", href: "/jobs/technology" },
-                  { name: "Hospitality Jobs", href: "/jobs/hospitality" },
+                  { name: "Healthcare Jobs", href: "/jobs?category=healthcare" },
+                  { name: "Construction Jobs", href: "/jobs?category=construction" },
+                  { name: "IT & Technology", href: "/jobs?category=technology" },
+                  { name: "Hospitality Jobs", href: "/jobs?category=hospitality" },
                 ],
               },
               {
@@ -860,7 +897,7 @@ export default function HomePage() {
                 links: [
                   { name: "Browse Jobs", href: "/jobs" },
                   { name: "Create Profile", href: "/register" },
-                  { name: "Application Status", href: "/dashboard" },
+                  { name: "Application Status", href: "/dashboard/jobseeker" },
                   { name: "Career Resources", href: "/resources" },
                 ],
               },
@@ -887,11 +924,15 @@ export default function HomePage() {
               <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-blue-200">
                 <li className="flex items-center">
                   <Phone className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
-                  <span>+255 123 456 789</span>
+                  <Link href="tel:+255123456789" className="hover:text-white transition-colors">
+                    +255 123 456 789
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <Mail className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
-                  <span>careers@mrc.go.tz</span>
+                  <Link href="mailto:careers@mrc.go.tz" className="hover:text-white transition-colors">
+                    careers@mrc.go.tz
+                  </Link>
                 </li>
                 <li className="flex items-center">
                   <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2 sm:mr-3 flex-shrink-0" />
@@ -900,7 +941,12 @@ export default function HomePage() {
               </ul>
               <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-green-500/20 rounded-xl sm:rounded-2xl border border-green-400/30">
                 <h5 className="font-semibold mb-2 text-green-300 text-sm">Career Hotline</h5>
-                <p className="text-green-200 font-bold text-base sm:text-lg">+255 800 JOBS</p>
+                <Link
+                  href="tel:+255800JOBS"
+                  className="text-green-200 font-bold text-base sm:text-lg hover:text-white transition-colors"
+                >
+                  +255 800 JOBS
+                </Link>
                 <p className="text-xs text-green-300">Available 24/7</p>
               </div>
             </div>
@@ -909,13 +955,18 @@ export default function HomePage() {
           <div className="border-t border-blue-800 mt-8 sm:mt-12 pt-6 sm:pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm text-blue-200 space-y-4 md:space-y-0">
               <div className="flex flex-wrap justify-center md:justify-start space-x-4 sm:space-x-8">
-                {["Privacy Policy", "Terms of Service", "Accessibility", "Sitemap"].map((item, index) => (
+                {[
+                  { name: "Privacy Policy", href: "/privacy" },
+                  { name: "Terms of Service", href: "/terms" },
+                  { name: "Accessibility", href: "/accessibility" },
+                  { name: "Sitemap", href: "/sitemap" },
+                ].map((item, index) => (
                   <Link
                     key={index}
-                    href="#"
+                    href={item.href}
                     className="hover:text-white transition-colors duration-300 hover:underline"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 ))}
               </div>
